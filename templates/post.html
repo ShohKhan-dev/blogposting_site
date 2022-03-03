@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} Blogs {% endblock %}
+
+
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='post-bg.jpg') }}')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>{{ post.title }}</h1>
+          <h2 class="subheading">{{ post.subtitle }}</h2>
+          <span class="meta">Posted by
+            {{ post.author }}
+            on {{ post.date_posted.strftime('%B %d, %Y') }}</span>
+
+          <a href="/update/{{ post.id }}"" class ="btn btn-outline-secondary btn-sm">Update</a>
+          <a href="/delete/{{ post.id }}"" class ="btn btn-outline-danger btn-sm">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ post.content|safe }}
+      </div>
+    </div>
+  </div>
+</article>
+
+
+{% endblock %}
